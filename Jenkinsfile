@@ -24,20 +24,14 @@ pipeline {
             }
         }
 
-       stage('SonarQube Analysis') {
-           environment {
-               SONAR_SCANNER_HOME = tool 'SonarScanner'
-           }
-           steps {
-               withSonarQubeEnv('SonarQube') {
-                   sh """
-                   ${SONAR_SCANNER_HOME}/bin/sonar-scanner \
-                   -Dsonar.projectKey=e-commerce-app \
-                   -Dsonar.sources=src
-                   """
-               }
-           }
-       }
+      stage('SonarQube Analysis') {
+                  steps {
+                      // Utilisation du plugin Maven pour Sonar au lieu du scanner CLI
+                      withSonarQubeEnv('SonarQube') {
+                          sh 'mvn sonar:sonar -Dsonar.projectKey=e-commerce-app'
+                      }
+                  }
+      }
 
 
 

@@ -24,14 +24,14 @@ pipeline {
             }
         }
 
-      stage('SonarQube Analysis') {
-                  steps {
-                      // Utilisation du plugin Maven pour Sonar au lieu du scanner CLI
-                      withSonarQubeEnv('SonarQube') {
-                          sh 'mvn sonar:sonar -Dsonar.projectKey=e-commerce-app'
-                      }
-                  }
-      }
+     stage('SonarQube Analysis') {
+         steps {
+             withSonarQubeEnv('SonarQube') {
+                 // Version complète pour éviter l'erreur de préfixe
+                 sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.10.0.2594:sonar -Dsonar.projectKey=e-commerce-app'
+             }
+         }
+     }
 
 
 

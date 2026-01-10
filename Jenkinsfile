@@ -24,6 +24,22 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+                    environment {
+                        SONAR_SCANNER_HOME = tool 'SonarScanner'
+                    }
+                    steps {
+                        withSonarQubeEnv('SonarQube') {
+                            sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner \
+                                -Dsonar.projectKey=e-commerce-app \
+                                -Dsonar.sources=src \
+                                -Dsonar.host.url=http://sonarqube:9000 \
+                                -Dsonar.login=sqp_04aa8e2971c2ad1e27fc210d5255c0c253de62b1"
+                        }
+                    }
+                }
+
+
         stage('Docker Build') {
             steps {
                 sh "docker build -t ${IMAGE_NAME} ."

@@ -18,7 +18,7 @@ public class CartController {
         this.productService = productService;
     }
 
-    // Voir le contenu du panier
+    // Voir le contenu 
     @GetMapping
     public Cart getCart() {
         return cartService.getCart();

@@ -44,7 +44,7 @@ public class ProductService {
         return product;
     }
 
-    
+
     public boolean deleteProduct(Long id) {
         Product product = getProductById(id);
         if (product != null) {

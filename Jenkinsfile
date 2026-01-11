@@ -12,11 +12,7 @@ pipeline {
     stages {
 
 
-        stage('Build') {
-            steps {
-                sh 'mvn clean package -DskipTests'
-            }
-        }
+       
 
         stage('Test') {
             steps {
@@ -27,7 +23,7 @@ pipeline {
      stage('SonarQube Analysis') {
          steps {
              withSonarQubeEnv('SonarQube') {
-                 // Version complète pour éviter l'erreur de préfixe
+
                  sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.10.0.2594:sonar -Dsonar.projectKey=e-commerce-app'
              }
          }

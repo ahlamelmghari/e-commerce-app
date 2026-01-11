@@ -34,7 +34,7 @@ public class ProductService {
         return product;
     }
 
-    // Modifier  un produit
+    // Mise a jour  un produit
     public Product updateProduct(Long id, Product updatedProduct) {
         Product product = getProductById(id);
         if (product != null) {
@@ -44,7 +44,7 @@ public class ProductService {
         return product;
     }
 
-    // Supprimer un produit
+  
     public boolean deleteProduct(Long id) {
         Product product = getProductById(id);
         if (product != null) {

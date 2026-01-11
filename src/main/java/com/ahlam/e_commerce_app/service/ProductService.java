@@ -34,7 +34,7 @@ public class ProductService {
         return product;
     }
 
-    // Mettre à jour un produit
+    // Modifier  un produit
     public Product updateProduct(Long id, Product updatedProduct) {
         Product product = getProductById(id);
         if (product != null) {
